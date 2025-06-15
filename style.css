@@ -1,0 +1,793 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+:root{
+    --navBac: #d9dfdb;
+    --text: #000000;
+    --btnCol: #f89c32;
+
+}
+
+/* Base styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--navBac);
+  color: var(--text);
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links li a:hover{
+  color: var(--btnCol);
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+/* Toggle Button  */
+/* Theme toggle styles */
+/* Theme toggle wheel button */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  width: 44px;
+  height: 44px;
+}
+
+.theme-toggle .wheel {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Sun & Moon icons */
+.theme-toggle .icon {
+  position: absolute;
+  font-size: 24px;
+  transition: all 0.4s ease;
+}
+
+/* Initial state */
+.theme-toggle .sun {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.theme-toggle .moon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Dark mode toggle effects */
+body.dark-mode .theme-toggle .wheel {
+  transform: rotate(360deg); /* Spin effect */
+}
+
+body.dark-mode .sun {
+  opacity: 1;
+  transform: scale(1);
+}
+
+body.dark-mode .moon {
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* Background and text transition */
+body {
+  background: #ffffff;
+  color: #000000;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+body.dark-mode {
+  background: #121212;
+  color: #ffffff;
+}
+
+/* Sign In button styling */
+.signup-btn{
+  background-color: var(--btnCol);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.signup-btn:hover {
+  background-color: #d87f19;
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-links {
+     display: none;
+    flex-direction: column;
+    background-color: #b8b7b7;
+    color: var(--text);
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 10px 0;
+    z-index: 1000; /* <-- Add this */
+  }
+
+  .nav-links .show {
+    display: flex;
+  }
+
+  .nav-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: -35px;
+    /* flex-direction: column; */
+    align-items: center;
+  }
+}
+
+
+/* footer */
+/* Reset & Page Layout */
+/* html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+} */
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #222;
+  color: #fff;
+  padding: 20px 0;
+  font-size: 14px;
+  margin-top: auto;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-section {
+  flex: 1 1 250px;
+  margin: 10px 20px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+  color: #f89c32;
+  margin-bottom: 10px;
+}
+
+.footer-section p,
+.footer-section ul,
+.footer-section li {
+  margin: 5px 0;
+  list-style: none;
+}
+
+.footer-section a {
+  text-decoration: none;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.footer-section a:hover {
+  color: #f89c32;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #111;
+  color: #aaa;
+  font-size: 13px;
+}
+
+
+
+/* BMI Page CSS */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section h2 {
+  color: #f89c32;
+  margin-bottom: 15px;
+}
+
+input, select, button {
+  padding: 10px;
+  margin: 5px 5px 10px 0;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  background-color: #f89c32;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e37912;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: center;
+  padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  input, select, button {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+
+/* Gym page CSS */
+.container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 2rem;
+      }
+
+      input[type="text"] {
+        padding: 0.75rem;
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .buttons {
+        margin-bottom: 2rem;
+      }
+
+      .buttons button {
+        padding: 0.75rem 1.5rem;
+        margin: 0.5rem;
+        border: none;
+        background-color: #f89c32;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+      }
+
+      .buttons button:hover {
+        background-color: #e07d1e;
+      }
+
+      .card-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1rem;
+      }
+
+      .card {
+        background: white;
+        border-radius: 10px;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: left;
+      }
+
+      .card h3 {
+        margin-top: 0;
+        color: #333;
+      }
+
+      .card p {
+        margin: 0.5rem 0;
+        color: #555;
+      }
+
+      .card a {
+        display: inline-block;
+        margin-top: 0.5rem;
+        text-decoration: none;
+        color: #f89c32;
+        font-weight: bold;
+      }
+
+      @media (max-width: 600px) {
+        .buttons button {
+          width: 100%;
+        }
+      }
+
+
+/* Social Page CSS */
+.social-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  flex-grow: 1;
+  
+}
+
+textarea,
+input {
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.form-row {
+  margin-bottom: 1rem;
+}
+
+textarea,
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+button {
+  background-color: #f89c32;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #d97c1f;
+}
+
+.notification-container {
+  display: none;
+  position: fixed;
+  top: 0.5rem;
+  right: 1rem;
+  background-color: #4caf50;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  animation: slideIn 0.5s ease-out;
+}
+
+/* HOME page CSS */
+/* ---------------- Banner Section ---------------- */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner img {
+  width: 100%;
+  height: 88vh;
+}
+
+.banner-text h1 {
+  position: absolute;
+  top: 226px;
+  left: 20px;
+  color: white;
+  margin-top: 80px;
+  font-size: 80px;
+}
+
+.banner-text p {
+  position: absolute;
+  top: 415px;
+  padding-left: 167px;
+  font-size: 30px;
+  font-weight: 500;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .banner-text h1 {
+    font-size: 42px;
+    top: 180px;
+    margin-top: 50px;
+  }
+
+  .banner-text p {
+    font-size: 18px;
+    padding-left: 20px;
+    top: 300px;
+  }
+}
+
+
+/* ---------------- About Section ---------------- */
+.about {
+  padding: 60px 20px;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.learn-more-btn {
+  padding: 10px 20px;
+  background-color: var(--btnback);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text h2 {
+    font-size: 28px;
+  }
+
+  .about-text p {
+    font-size: 16px;
+  }
+
+  .learn-more-btn {
+    margin-top: 10px;
+  }
+}
+
+
+/* ---------------- Why Join Us Section ---------------- */
+.why-join {
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+}
+
+.why-join .about-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.why-join .about-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+}
+
+.why-join .about-text {
+  flex: 1;
+}
+
+.why-join .about-text h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.why-join .about-text ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+.why-join .about-text ul li {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+
+.why-join .about-text p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .why-join .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .why-join .about-text h2 {
+    font-size: 28px;
+  }
+
+  .why-join .about-text ul li,
+  .why-join .about-text p {
+    font-size: 16px;
+  }
+}
+
+
+/* ---------------- Trainers Section ---------------- */
+.trainers {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.trainers h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.trainer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.trainer-card {
+  background-color: #e2e2e2;
+  border-radius: 12px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.trainer-card:hover {
+  transform: translateY(-5px);
+}
+
+.trainer-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.trainer-card h3 {
+  margin-bottom: 5px;
+  font-size: 20px;
+}
+
+.trainer-card p {
+  color: #666;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .trainer-card {
+    width: 80%;
+  }
+
+  .trainers h2 {
+    font-size: 28px;
+  }
+}
+
+
+/* ---------------- Member Form Section ---------------- */
+.member-form-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.member-form-section h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.member-form {
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+  width: 82%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.submit-btn {
+  background-color: --;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #e07d0c;
+}
+
+@media (max-width: 600px) {
+  .member-form-section h2 {
+    font-size: 28px;
+  }
+
+  .member-form {
+    padding: 20px;
+  }
+}
+
+
+/* ---------------- Success Message ---------------- */
+.success-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1000;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

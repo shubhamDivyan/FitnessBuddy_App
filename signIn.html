@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/style/signIn.css" />
+     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    
+  </head>
+  <body>
+    <section class="signup-section">
+      <div class="container">
+        <div class="signup-card">
+          <div class="form-container">
+            <h2>Sign up now</h2>
+            <form id="signupForm">
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter your Name"
+                id="User-Name"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email address"
+                id="signup-email"
+                required
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                id="signup-password"
+                required
+              />
+
+              <button type="submit" class="btn" id="signup">Sign Up</button>
+              <p id="signup-message"></p>
+
+              <p class="or-text">or sign up with:</p>
+              <div class="social-buttons">
+                <button type="button" id="facebook-signin">
+                  <i class="fab fa-facebook-f"></i> Facebook
+                </button>
+                <button type="button" id="google-signin">
+                  <i class="fab fa-google"></i> Google
+                </button>
+                <button type="button" id="twitter-signin">
+                  <i class="fab fa-twitter"></i> Twitter
+                </button>
+                <button type="button" id="github-signin">
+                  <i class="fab fa-github"></i> GitHub
+                </button>
+              </div>
+
+              <p class="footer-link">
+                Already have an account? <a href="login.html">Login</a>
+              </p>
+            </form>
+          </div>
+          <div class="image-container">
+            <img
+              src="https://i.pinimg.com/236x/f8/d7/b8/f8d7b86a18b1ec36985e28520b1e313f.jpg"
+              alt="Signup Image"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <script type="module" src="script.js"></script> -->
+       <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+  </body>
+</html>
+
+<script type="module">
+  import { auth, db } from "./firebase-config.js";
+  import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+  import {
+    setDoc,
+    doc,
+  } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("signupForm");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("User-Name").value;
+      const email = document.getElementById("signup-email").value;
+      const password = document.getElementById("signup-password").value;
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        const user = userCredential.user;
+
+        await setDoc(doc(db, "users", user.uid), {
+          uid: user.uid,
+          name: name,
+          email: email,
+        });
+          window.location.href = "login.html";
+      } catch (error) {
+        alert("SignUp Failed:"+error.message)
+      }
+    });
+  });
+</script>

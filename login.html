@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/style/signIn.css" />
+    <style>
+        .success-message {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #4BB543;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        font-size: 1rem;
+        z-index: 1000;
+        animation: slideDown 0.3s ease-out;
+      }
+      @keyframes slideDown {
+        from { transform: translateY(-100%); }
+        to { transform: translateY(0); }
+      }
+    </style>
+  <body>
+    <section class="signup-section">
+      <div class="container">
+        <div class="signup-card">
+          <div class="form-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+              <input
+                type="email"
+                placeholder="Email address"
+                id="login-email"
+                required
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                id="login-password"
+                required
+              />
+
+              <button type="submit" class="btn" id="login-btn">Login</button>
+              <p id="login-message"></p>
+
+              <p class="or-text">or login with:</p>
+              <div class="social-buttons">
+                <button type="button">
+                  <i class="fab fa-facebook-f"></i> Facebook
+                </button>
+                <button type="button">
+                  <i class="fab fa-google"></i> Google
+                </button>
+                <button type="button">
+                  <i class="fab fa-twitter"></i> Twitter
+                </button>
+                <button type="button">
+                  <i class="fab fa-github"></i> GitHub
+                </button>
+              </div>
+
+              <p class="footer-link">
+                Don't have an account? <a href="/signIn.html">Sign Up</a>
+              </p>
+            </form>
+          </div>
+          <div class="image-container">
+            <img
+              src="https://i.pinimg.com/236x/5b/28/9c/5b289cb51a0acf4f1cd19d44f3062635.jpg"
+              alt="Login Image"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <script type="module" src="/FitnessBuddyAPP/JSFile/auth.js"></script> -->
+
+  </body>
+</html>
+
+<script type="module">
+  import { auth } from "./firebase-config.js";
+  import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+    document.addEventListener("DOMContentLoaded",()=>{
+         const form = document.getElementById("loginForm");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("login-email").value.trim();
+    const password = document.getElementById("login-password").value.trim();
+    try {
+     const userCred=await signInWithEmailAndPassword(auth, email, password);
+    //   console.log(userCred.user);
+      window.location.href = "./index.html";
+    } catch (error) {
+        alert("Login Failed:"+error.message)
+    }
+  });
+    })
+</script>

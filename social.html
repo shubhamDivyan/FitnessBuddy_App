@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FitnessBuddy</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Navbar -->
+      <nav class="navbar">
+        <div class="logo">
+          Fitness <span style="color: #f89c32">Buddy</span>
+        </div>
+        <span class="material-symbols-outlined menu-icon" id="menuIcon"
+          >menu</span
+        >
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="social.html" class="active">Social</a></li>
+          <li><a href="bmi.html">BMI Calculator</a></li>
+          <li><a href="gym.html">Gym NearByMe</a></li>
+        </ul>
+        <div class="nav-buttons">
+          <button
+            id="themeToggleBtn"
+            class="theme-toggle"
+            aria-label="Toggle Theme"
+          >
+            <div class="wheel">
+              <span class="icon moon">&#9789;</span>
+              <span class="icon sun">&#9728;</span>
+            </div>
+          </button>
+          <button id="authBtn" class="signup-btn">Sign In</button>
+        </div>
+      </nav>
+
+      <!-- Notification Container -->
+      <div id="notificationContainer" class="notification-container"></div>
+
+      <!-- Main Content -->
+      <div
+        class="container social-grid"
+        id="socialContent"
+        style="display: none"
+      >
+        <!-- Left Column -->
+        <div class="left-column">
+          <h2>📝 Create a Post</h2>
+          <textarea
+            id="postContent"
+            placeholder="What's on your mind?"
+          ></textarea>
+          <button onclick="submitPost()">Post</button>
+        </div>
+
+        <!-- Middle Column -->
+        <div class="middle-column">
+          <h2>📣 Community Feed</h2>
+          <div id="postFeed"></div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+          <div class="trainer-form">
+            <h2>💪 Become a Trainer</h2>
+            <input type="text" id="trainerName" placeholder="Your Name" />
+            <input type="text" id="speciality" placeholder="Specialization" />
+            <input
+              type="number"
+              id="experience"
+              placeholder="Years of Experience"
+            />
+            <textarea id="bio" placeholder="Short Bio"></textarea>
+            <button onclick="submitTrainerProfile()">Create Profile</button>
+          </div>
+
+          <div class="trainer-list">
+            <h3>🌟 Available Mentors</h3>
+            <div id="trainerList"></div>
+          </div>
+
+          <div class="gym-partner-section">
+            <h3>📍 Find Gym Partner Near You</h3>
+            <button onclick="findGymPartner()">Find Partner</button>
+            <div id="gymPartnerList"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Not Logged In Message -->
+      <div
+        id="loginMessage"
+        class="container"
+        style="text-align: center; padding: 3rem"
+      >
+        <h2>You must be logged in to access this page.</h2>
+        <p>
+          <a href="login.html" style="color: #f89c32">Login</a> or
+          <a href="signIn.html" style="color: #f89c32">Sign Up</a> to continue.
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-section">
+            <h3>Fitness <span style="color: #f89c32">Buddy</span></h3>
+            <p>Your partner on the journey to a healthier, happier life.</p>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="social.html">Social</a></li>
+              <li><a href="bmi.html">BMI Calculator</a></li>
+              <li><a href="gym.html">Gym NearByMe</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Contact</h4>
+            <p>Email: support@fitnessbuddy.com</p>
+            <p>Phone: +91 98765 43210</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Fitness Buddy. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Firebase Auth Check -->
+    <script type="module">
+      import { auth } from "./firebase-config.js";
+      import {
+        onAuthStateChanged,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+      const socialContent = document.getElementById("socialContent");
+      const loginMessage = document.getElementById("loginMessage");
+      const authBtn = document.getElementById("authBtn");
+
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          socialContent.style.display = "flex";
+          loginMessage.style.display = "none";
+          authBtn.textContent = "Logout";
+          authBtn.onclick = async () => {
+            await signOut(auth);
+            window.location.href = "login.html";
+          };
+        } else {
+          socialContent.style.display = "none";
+          loginMessage.style.display = "block";
+          authBtn.textContent = "Sign In";
+          authBtn.onclick = () => {
+            window.location.href = "login.html";
+          };
+        }
+      });
+    </script>
+
+    <!-- Social Page Logic -->
+    <script src="script.js"></script>
+  </body>
+</html>

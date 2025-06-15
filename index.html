@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FitnessBuddy</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+     <div class="wrapper">
+    <nav class="navbar">
+      <div class="logo">Fitness <span style="color: #f89c32">Buddy</span></div>
+      <span class="material-symbols-outlined menu-icon" id="menuIcon"
+        >menu</span
+      >
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="social.html">Social</a></li>
+        <li><a href="bmi.html">BMI Calculator</a></li>
+        <li><a href="gym.html">Gym NearByMe</a></li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button
+          id="themeToggleBtn"
+          class="theme-toggle"
+          aria-label="Toggle Theme"
+        >
+          <div class="wheel">
+            <span class="icon moon">&#9789;</span>
+            <span class="icon sun">&#9728;</span>
+          </div>
+        </button>
+
+        <button id="sing" class="signup-btn">Sign In</button>
+      </div>
+    </nav>
+    <main>
+  <!-- Banner -->
+  <div class="banner">
+    <img src="/Image/banner.png" alt="banner-Image" />
+    <div class="banner-text">
+      <h1>Welcome to <span style="color: #f5890d">Fitness Buddy</span></h1>
+      <p>Your journey to a healthier life starts here.</p>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="about-container">
+      <div class="about-image">
+        <img src="/Image/aboutimage.png" alt="About Fitness Buddy" />
+      </div>
+      <div class="about-text">
+        <h2>About <span style="color: #f89c32">Fitness Buddy</span></h2>
+        <p>
+          Fitness Buddy is your ultimate companion on your health journey.
+          Whether you're a beginner or a seasoned fitness enthusiast, our
+          platform helps you stay motivated, connect with like-minded
+          individuals, and track your goals. From personalized workouts to
+          BMI tracking and buddy matching — we’re here to support your
+          lifestyle change.
+        </p>
+        <p>
+          Join a growing community of health-focused users and start your
+          transformation today. Together, we sweat, grow, and thrive!
+        </p>
+        <button class="learn-more-btn">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY JOIN US Section -->
+  <section class="why-join" id="why">
+    <div class="about-container">
+      <div class="about-image">
+        <img src="https://fleetflexfitness.in/wp-content/uploads/2024/10/hero_slider_bg_4-1024x576.png" alt="Why Join Fitness Buddy" />
+      </div>
+      <div class="about-text">
+        <h2>Why <span style="color: #f89c32">Join Us?</span></h2>
+        <ul style="list-style: none; padding-left: 0; font-size: 1rem; line-height: 1.8;">
+          <li>✅ Personalized fitness & diet plans tailored to your goals</li>
+          <li>✅ Find & connect with nearby fitness buddies for support</li>
+          <li>✅ Track BMI, daily progress & weekly milestones</li>
+          <li>✅ Participate in motivating challenges & community events</li>
+          <li>✅ Explore gym locations and expert consultations all-in-one</li>
+        </ul>
+        <p>
+          Whether you're just starting your fitness journey or looking to reach new heights, 
+          Fitness Buddy offers a supportive space where your wellness goals become achievable and enjoyable.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trainers Section -->
+  <section class="trainers" id="trainers">
+    <h2>Our <span style="color: #f89c32">Fitness Experts</span></h2>
+    <div class="trainer-container">
+      <div class="trainer-card">
+        <img src="/Image/fitnessTrainer.png" alt="Fitness Trainer" />
+        <h3>Ravi Kumar</h3>
+        <p>Fitness Trainer</p>
+      </div>
+      <div class="trainer-card">
+        <img src="/Image/Dietexpert.webp" alt="Diet Expert" />
+        <h3>Sneha Mehta</h3>
+        <p>Diet Expert</p>
+      </div>
+      <div class="trainer-card">
+        <img src="/Image/yogaexpert.jpeg" alt="Yoga Expert" />
+        <h3>Anjali Sharma</h3>
+        <p>Yoga Instructor</p>
+      </div>
+      <div class="trainer-card">
+        <img src="/Image/mentalexpert.webp" alt="Wellness Coach" />
+        <h3>Vikram Joshi</h3>
+        <p>Mental Wellness Coach</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Membership Form Section -->
+  <section class="member-form-section" id="become-member">
+    <h2>Become Our <span style="color: #f89c32">Member</span></h2>
+
+    <form class="member-form">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required />
+        <!-- <input type="email" id="email" name="email" placeholder="Enter your email" required /> -->
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required />
+      </div>
+
+      <div class="form-group">
+        <label for="goal">Fitness Goal</label>
+        <select id="goal" name="goal" required>
+          <option value="">Select your goal</option>
+          <option value="lose">Lose Weight</option>
+          <option value="gain">Gain Muscle</option>
+          <option value="tone">Body Toning</option>
+          <option value="health">Stay Healthy</option>
+        </select>
+      </div>
+
+      <button type="submit" class="submit-btn">Join Now</button>
+    </form>
+    
+    <div id="successMessage" class="success-message" style="display: none">
+      🎉 Thank you for becoming a member!
+    </div>
+  </section>
+</main>
+
+
+    <!-- Footer page -->
+    <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-section">
+            <h3>Fitness <span style="color: #f89c32">Buddy</span></h3>
+            <p>Your partner on the journey to a healthier, happier life.</p>
+          </div>
+
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="/htmlFile/social.html">Social</a></li>
+              <li><a href="bmi.html">BMI Calculator</a></li>
+              <li><a href="gym.html">Gym NearByMe</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Contact</h4>
+            <p>Email: support@fitnessbuddy.com</p>
+            <p>Phone: +91 98765 43210</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Fitness Buddy. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+<script type="module">
+  import { auth } from "./firebase-config.js";
+  import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const signBtn = document.getElementById("sing");
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        signBtn.textContent = "Logout";
+        signBtn.addEventListener("click", async () => {
+          await signOut(auth);
+          showToast("You are successfully logged out", "success");
+          window.location.href = "./login.html";
+        });
+      } else {
+        signBtn.textContent = "Sign In";
+        signBtn.addEventListener("click", () => {
+          window.location.href = "./login.html";
+        });
+      }
+    });
+  });
+</script>
+
