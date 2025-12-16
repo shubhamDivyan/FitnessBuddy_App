@@ -23,7 +23,7 @@ This feature is part of the full [FitnessBuddy_App](https://github.com/shubhamDi
 ## 🌐 Live Demo
 
 🔗 **Live URL:**  
-https://resonant-melomakarona-ed90b4.netlify.app/gym
+https://resonant-melomakarona-ed90b4.netlify.app/
 
 > This link opens the Gym Finder section of the full FitnessBuddy web app.
 
